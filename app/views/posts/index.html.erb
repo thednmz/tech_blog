@@ -1,0 +1,143 @@
+ <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= root_path%>">
+    <img src="https://seeklogo.com/images/A/aperture-science-logo-57F8044379-seeklogo.com.png" alt="" width="60" height="60" class="d-inline-block align-text-middle">
+      TECHBLOG</a>
+    <form class="d-flex">
+      <%= link_to "New Post", new_post_path, :class => "btn btn-outline-primary"%>
+    </form>
+  </div>
+</nav>
+
+<br>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner w-50 width:640px height:360px">
+    
+    <% @posts.each do |post| %>
+      <%if post[:id] == Post.maximum(:id) %>
+      <div class="carousel-item active">
+        <div class="container">
+        <img  src="<%= post.imgurl%>" class="d-block w-100" alt="...">
+        </div>
+          
+          <div class="carousel-caption d-none d-md-block">
+            <h5><a href="/posts/<%= post[:id]%> " class="link-light"><%= post.title%></a></h5>
+            <p><%= truncate(post.body, :lenght => 50 )%></p>
+          </div>
+        </div>
+        <%else%>
+        <div class="carousel-item">
+          <div class="container">
+            <img  src="<%= post.imgurl%>" class="d-block w-100 img-fluid" alt="...">
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <h5 ><a href="/posts/<%= post[:id]%>" class="link-light"><%= post.title%></a></h5>
+            <p><%= truncate(post.body, :lenght => 50 )%></p>
+          </div>
+        </div>
+        <%end%>
+    <% end %>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted ">
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5 ">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Techblog
+          </h6>
+          <p>
+            Everything about technology.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="<%= root_path %>" class="text-reset">Techblog</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Techbforum</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Techcord</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">TechApp</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="<%= root_path %>" class="text-reset">Homepage</a>
+          </p>
+          <p>
+            <a href="<%= new_post_path %>" class="text-reset">New Post</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@techblog.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="#">Techblog</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+

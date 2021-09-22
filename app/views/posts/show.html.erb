@@ -1,0 +1,24 @@
+ <nav class="navbar navbar-light bg-light">
+  
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="<%= root_path%>">
+    <img src="https://seeklogo.com/images/A/aperture-science-logo-57F8044379-seeklogo.com.png" alt="" width="60" height="60" class="d-inline-block align-text-middle">
+      TECHBLOG</a>
+      
+    <form class="d-flex">
+      <%= link_to "Go Back", root_path, :class => "btn btn-outline-primary"%>
+    </form>
+  </div>
+</nav>
+<br>
+<img src="<%= @post.imgurl%>" class="d-block w-50 img-fluid max-width: 100% height: auto" alt="...">
+<br>
+<h1> <%= @post.title %></h1>
+<br>
+<div> <%= @post.body %></div>
+<br>
+
+<%= link_to "Edit Post", edit_post_path(@post), :class => "btn btn-primary"%>
+<%= link_to "Delete Post", post_path(@post), :class => "btn btn-danger", method: :Delete, data: { confirm: "Are you sure?"} %>
+<br>
+<br>
